@@ -255,6 +255,15 @@ body {
 .d-block {
 	display: block !important;
 }
+.black-background {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.black-background h1 {
+	font-size: 60px;
+	color: #ffffff;
+}
 @media (max-width: 886px) {
 	body {
 		justify-content: space-between;
@@ -269,6 +278,7 @@ body {
 		margin: 50px 0 100px 0;
 	}
 	.alert-window {
+		position: fixed;
 		width: 100vw;
 		height: 100vh;
 		display: flex;

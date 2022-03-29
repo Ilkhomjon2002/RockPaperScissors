@@ -13,6 +13,8 @@ let wl_pickedByHouseContainer = document.querySelector(".wl-picked--house-js");
 
 const scoreContainer = document.querySelector(".container-score--js");
 
+const count = document.getElementById("counter");
+
 const playAgainBtn = document.querySelector(".play-js");
 const playAgainTitle = document.querySelector(".play-again--title");
 
@@ -37,14 +39,27 @@ playAgainBtn.addEventListener("click", playAgain);
 handIcons.forEach((icon) => {
 	icon.addEventListener("click", () => {
 		let randomIconIndex = randomNum(0, 2);
+		let timer = 4;
+
 		pickedByUser = icon.outerHTML;
 		pickedByHouse = arrayOfIcons[randomIconIndex].outerHTML;
 
 		pickingByUser();
+		let tick = () => {
+			timer--;
+			count.textContent = timer;
+			if (timer === 0) {
+				timer = 3;
+				count.textContent = 3;
+			}
+		};
+		tick();
+
+		let counter = setInterval(tick, 1000);
 
 		setTimeout(() => {
-			console.log(randomIconIndex);
 			pickingByHouse();
+			clearInterval(counter);
 		}, 3000);
 
 		setTimeout(() => {
